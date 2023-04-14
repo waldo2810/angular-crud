@@ -5,6 +5,7 @@ import { ListComponent } from './containers/list/list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,9 +33,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatButtonModule,
     MatInputModule,
+    MatSelectModule,
     MatTableModule,
     MatIconModule,
     FormsModule
   ],
 })
-export class CrudExampleModule {}
+export class CrudExampleModule { }
