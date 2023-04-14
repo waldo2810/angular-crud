@@ -1,0 +1,9 @@
+<section class="container">
+  <h1 mat-dialog-title>Está seguro que desea {{ data.toLowerCase() }}?</h1>
+  <section mat-dialog-content class="container__buttons">
+    <button mat-raised-button color="secondary" (click)="close(false)">
+      No
+    </button>
+    <button mat-raised-button color="primary" (click)="close(true)">Sí</button>
+  </section>
+</section>
