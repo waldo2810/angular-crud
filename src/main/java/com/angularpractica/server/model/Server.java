@@ -14,23 +14,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Server {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(name = "image_url")
-    private String imageUrl;
+  @Column(name = "image_url")
+  private String imageUrl;
 
-    @Column(name = "ip_address", unique = true)
-    @NotEmpty(message = "IP address cannot be empty or null")
-    private String ipAddress;
+  @Column(name = "ip_address", unique = true)
+  @NotEmpty(message = "IP address cannot be empty or null")
+  private String ipAddress;
 
-    private String memory;
+  private String memory;
 
-    private String name;
+  private String name;
 
-    private Status status;
+  private Status status;
 
-    private String type;
+  private String type;
 
 }
