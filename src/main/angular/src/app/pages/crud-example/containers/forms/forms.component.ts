@@ -104,11 +104,9 @@ export class FormsComponent implements OnDestroy {
         if (!value) return;
         if (back) {
           this._goList();
-          return;
         }
         if (create) {
           this._create(body);
-          return;
         }
       });
     this._subscriptions.push(sub);

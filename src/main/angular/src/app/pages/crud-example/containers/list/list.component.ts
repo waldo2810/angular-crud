@@ -112,11 +112,6 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   applyFilter(): void {
-    const filterValue = this.criterial.trim().toLowerCase();
-    // this.dataSource = this.servers.filter((server) => {
-    //   const name = server.name.trim().toLowerCase();
-    //   return name.includes(filterValue);
-    // });
     this.dataSource = this.servers.filter((server) =>
       server.name
         .trim()

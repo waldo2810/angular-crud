@@ -1,15 +1,15 @@
 package com.angularpractica.server.enumeration;
 
 public enum Status {
-  SERVER_UP("SERVER_UP"), SERVER_DOWN("SERVER_DOWN");
+    SERVER_UP("SERVER_UP"), SERVER_DOWN("SERVER_DOWN");
 
-  private final String status;
+    private final String serverStatus;
 
-  Status(String status) {
-    this.status = status;
-  }
+    Status(String serverStatus) {
+        this.serverStatus = serverStatus;
+    }
 
-  public String getStatus() {
-    return this.status;
-  }
+    public String getServerStatus() {
+        return this.serverStatus;
+    }
 }
