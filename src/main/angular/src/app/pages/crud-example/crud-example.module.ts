@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsComponent } from './containers/forms/forms.component';
 import { ListComponent } from './containers/list/list.component';
+import { LoginComponent } from './containers/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -9,11 +10,17 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthguardGuard } from '../../shared/guard/authguard.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: ListComponent,
+    canActivate: [AuthguardGuard],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'forms',
@@ -26,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [FormsComponent, ListComponent],
+  declarations: [FormsComponent, ListComponent, LoginComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -36,7 +43,7 @@ const routes: Routes = [
     MatSelectModule,
     MatTableModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
   ],
 })
-export class CrudExampleModule { }
+export class CrudExampleModule {}
