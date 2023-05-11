@@ -15,6 +15,8 @@ export class CrudExampleService {
   private _pingPath = this._url + environment.path.ping;
   private _savePath = this._url + environment.path.save;
   private _deletePath = this._url + environment.path.delete;
+  private _loginPath = this._url + environment.path.auth.authenticate;
+  private _registerPath = this._url + environment.path.auth.register;
 
   constructor(private _http: HttpClient, private _snackBar: MatSnackBar) {}
 
@@ -46,6 +48,10 @@ export class CrudExampleService {
 
   ping(ipAddress: string): Observable<IServer> {
     return this._http.get<IServer>(`${this._pingPath}/${ipAddress}`);
+  }
+
+  login(email: string, password: string) {
+    return this._http.post(this._loginPath, { email, password });
   }
 
   openSnackBar(message: string): void {

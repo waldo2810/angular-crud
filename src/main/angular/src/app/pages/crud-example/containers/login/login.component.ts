@@ -1,43 +1,46 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/shared/auth/auth.service';
+import { CrudExampleService } from 'src/app/shared/crud-example/crud-example.service';
+import { IUser } from 'src/app/shared/model/interface/user';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-  model: any = {};
+export class LoginComponent {
+  model!: IUser;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private http: HttpClient
-  ) {}
+  form: FormGroup = new FormGroup({
+    email: new FormControl(null, Validators.required),
+    password: new FormControl(null, Validators.required),
+  });
 
-  ngOnInit() {
-    sessionStorage.setItem('token', '');
+  constructor(private _authService: AuthService, private _router: Router) {}
+
+  get emailField(): AbstractControl | null {
+    return this.form.get('email');
+  }
+  get passwordField(): AbstractControl | null {
+    return this.form.get('password');
   }
 
   login() {
-    let url = 'http://localhost:8082/login';
-    this.http
-      .post<Observable<boolean>>(url, {
-        userName: this.model.username,
-        password: this.model.password,
-      })
-      .subscribe((isValid) => {
-        if (isValid) {
-          sessionStorage.setItem(
-            'token',
-            `${this.model.username} : ${this.model.password}`
-          );
-          this.router.navigate(['']);
-        } else {
-          alert('Authentication failed.');
-        }
-      });
+    if (this.form.invalid) {
+      alert('Wrong user/password');
+    }
+
+    this._authService
+      .login(this.form.get('email')?.value, this.form.get('password')?.value)
+      .subscribe(() => this._router.navigate(['list']));
   }
 }

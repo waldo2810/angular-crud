@@ -4,19 +4,15 @@ import { FormsComponent } from './containers/forms/forms.component';
 import { ListComponent } from './containers/list/list.component';
 import { LoginComponent } from './containers/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
-import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthguardGuard } from '../../shared/guard/authguard.guard';
+import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
+import { IsAuthenticatedGuard } from 'src/app/shared/guard/is-authenticated.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'list',
     component: ListComponent,
-    canActivate: [AuthguardGuard],
+    canActivate: [IsAuthenticatedGuard],
   },
   {
     path: 'login',
@@ -25,10 +21,17 @@ const routes: Routes = [
   {
     path: 'forms',
     component: FormsComponent,
+    canActivate: [IsAuthenticatedGuard],
   },
   {
     path: 'forms/:id',
     component: FormsComponent,
+    canActivate: [IsAuthenticatedGuard],
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login',
   },
 ];
 
@@ -38,12 +41,8 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
-    MatButtonModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTableModule,
-    MatIconModule,
     FormsModule,
+    AngularMaterialModule,
   ],
 })
 export class CrudExampleModule {}

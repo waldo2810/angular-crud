@@ -15,22 +15,31 @@
       <mat-form-field appearance="outline">
         <mat-label>IP Address</mat-label>
         <input matInput formControlName="ipAddress" required />
-        <mat-error *ngIf="ipField?.touched && ipField?.errors?.['required']">Es requerido</mat-error>
+        <mat-error *ngIf="ipField?.touched && ipField?.errors?.['required']"
+          >Es requerido</mat-error
+        >
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
         <input matInput formControlName="name" required />
-        <mat-error *ngIf="nameField?.touched && nameField?.errors?.['required']">Es requerido</mat-error>
+        <mat-error *ngIf="nameField?.touched && nameField?.errors?.['required']"
+          >Es requerido</mat-error
+        >
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Memory</mat-label>
         <input matInput formControlName="memory" required />
-        <mat-error *ngIf="memoryField?.touched && memoryField?.errors?.['required']">Es requerido</mat-error>
+        <mat-error
+          *ngIf="memoryField?.touched && memoryField?.errors?.['required']"
+          >Es requerido</mat-error
+        >
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Type</mat-label>
         <input matInput formControlName="type" required />
-        <mat-error *ngIf="typeField?.touched && typeField?.errors?.['required']">Es requerido</mat-error>
+        <mat-error *ngIf="typeField?.touched && typeField?.errors?.['required']"
+          >Es requerido</mat-error
+        >
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -39,7 +48,9 @@
           <mat-option value="SERVER_UP">SERVER_UP</mat-option>
           <mat-option value="SERVER_DOWN">SERVER_DOWN</mat-option>
         </mat-select>
-        <mat-error *ngIf="statusField?.touched && statusField?.errors?.['required']">
+        <mat-error
+          *ngIf="statusField?.touched && statusField?.errors?.['required']"
+        >
           Es requerido
         </mat-error>
       </mat-form-field>

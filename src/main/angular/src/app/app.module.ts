@@ -6,25 +6,22 @@ import { AppComponent } from './app.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from './pipes/filter.pipe';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { AuthInterceptorProvider } from './shared/interceptor/auth.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, DialogComponent, FilterPipe],
+  declarations: [AppComponent, DialogComponent, NavigationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatSnackBarModule,
     FormsModule,
+    AngularMaterialModule,
   ],
-  providers: [],
+  providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

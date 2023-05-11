@@ -6,5 +6,9 @@ export const environment = {
     ping: '/ping',
     save: '/save',
     delete: '/delete',
+    auth: {
+      authenticate: '/auth/authenticate',
+      register: '/auth/register',
+    },
   },
 };

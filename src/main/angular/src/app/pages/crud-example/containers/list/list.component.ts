@@ -5,13 +5,11 @@ import { Subscription } from 'rxjs';
 import { CrudExampleService } from 'src/app/shared/crud-example/crud-example.service';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 import { IServer } from 'src/app/shared/model/interface/server';
-import { FilterPipe } from '../../../../pipes/filter.pipe';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  providers: [FilterPipe],
 })
 export class ListComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription[] = [];
@@ -32,8 +30,7 @@ export class ListComponent implements OnInit, OnDestroy {
   constructor(
     private _crudExampleService: CrudExampleService,
     private _dialog: MatDialog,
-    private _router: Router,
-    private _filterPipe: FilterPipe
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -89,21 +86,6 @@ export class ListComponent implements OnInit, OnDestroy {
   goForm(id?: number): void {
     const path = !!id ? `forms/${id}` : 'forms';
     this._router.navigate([path]);
-  }
-
-  filterUsers(): void {
-    if (this.criterial) {
-      this.dataSource = this._filterPipe.transform(
-        this.servers,
-        this.criterial
-      );
-    } else {
-      this.dataSource = this.servers;
-    }
-  }
-
-  test(): void {
-    this.filterUsers();
   }
 
   listUsers(): void {
